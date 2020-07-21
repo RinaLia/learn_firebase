@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>Learn About Firebase</h1>
+  <ul></ul>
+          <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+          <!-- include firebase database -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-database.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-analytics.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyBFHlk3Z8BDxwD5pwo46XWSHomtxTRxxuQ",
+            authDomain: "apeachtalk.firebaseapp.com",
+            databaseURL: "https://apeachtalk.firebaseio.com",
+            projectId: "apeachtalk",
+            storageBucket: "apeachtalk.appspot.com",
+            messagingSenderId: "857717902386",
+            appId: "1:857717902386:web:f2b94171beb91ec4c6c02b",
+            measurementId: "G-26FY3L49ZW"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+
+          //reference database
+          var db=firebase.database()
+          var chatRef = db.ref('chat')
+
+          /////////////////////////////////////////////
+
+          //sort & filter
+          // chatRef.orderByValue().limitToLast(2).on('value', showData, showError)
+
+
+          // function showData (items){
+          //   items.forEach(function(child){
+          //     console.log(child.val());
+              
+          //   })
+
+          // }
+
+          // function showError(err){
+          //   console.log(err);
+            
+          // }
+
+
+
+          /////////////////////////////////////////
+          //CRUD
+          // SET: rewrite&replace
+          // PUSH: add data & generate auto id
+          // UPDATE: add data & edit
+          chatRef.on('value', showData, showError)
+
+
+          // chatRef.on('child_added', addData)
+          // chatRef.on('child_removed, addData)
+
+
+          chatRef.child(2).remove()
+
+          function addData(){
+
+            console.log('succes bruh!');
+            
+          }
+
+          chatRef.update({
+            
+              // 4:{
+              //   "name":"Carlos",
+              //   "message":"you can do it!"
+              // }
+              "4/name":"Caca"
+
+          
+          })
+
+          function showData (items){
+            items.forEach(function(child){
+              console.log(child.val());
+              
+            })
+
+          }
+
+          function showError(err){
+            console.log(err);
+            
+          }
+
+       
+
+
+          
+
+
+        
+
+
+
+
+
+
+         
+
+
+     
+
+    
+      
+      
+
+
+          
+
+
+        </script>
+</body>
+</html>
